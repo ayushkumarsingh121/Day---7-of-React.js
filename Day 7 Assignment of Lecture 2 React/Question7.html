@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components in React</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    let root = ReactDOM.createRoot(document.getElementById("root"));
+
+    // Main app component
+    let App = () => {
+      let styleContainer = {
+        width: "80%",
+        border: "none",
+        borderRadius: "10px",
+        margin: "120px auto",
+        backgroundColor: "#F5F5F5",
+        padding : "10px 0px 100px 0px"
+      };
+
+      let heading = {
+        textAlign: "center",
+        padding: "20px",
+        fontSize: "36px",
+        fontWeight: "bold",
+        color: "#2D3748",
+      };
+
+      let subheading = {
+        color: "#38A169",
+        fontWeight: "bold",
+      };
+
+      let boxStyle = {
+        display: "flex",
+        justifyContent: "space-evenly",
+        padding: "20px",
+      };
+
+      return (
+        <div style={styleContainer} className="container">
+          <h1 style={heading}>
+            Getting started in <span style={subheading}>3 easy steps</span>
+          </h1>
+          <div style={boxStyle}>
+            <ComponentBox
+              number="01"
+              title="Find your template"
+              description="Every template is embedded within an iframe, so you can easily check what they look like and test the responsive behaviour."
+            />
+            <ComponentBox
+              number="02"
+              title="Copy the code"
+              description="Click the code tab to see the actual source code of the template. Copy and paste it into your project and adjust it to your needs."
+            />
+            <ComponentBox
+              number="03"
+              title="Enjoy your free time"
+              description="You've just saved yourself a bunch of time not building the same stuff over and over again. Enjoy your free time, and build business features."
+            />
+          </div>
+        </div>
+      );
+    };
+
+    // Individual component for each step box
+    let ComponentBox = ({ number, title, description }) => {
+      let babyBoxStyle = {
+        border: "none",
+        padding: "30px",
+        textAlign: "center",
+        backgroundColor: "#ffffff",
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+        borderRadius: "8px",
+        width: "300px",
+      };
+
+      let numberStyle = {
+        backgroundColor: "#C6F6D5",
+        color: "#38A169",
+        fontSize: "24px",
+        fontWeight: "bold",
+        display: "inline-block",
+        padding: "10px 20px",
+        borderRadius: "10px",
+        marginBottom: "15px",
+      };
+
+      let titleStyle = {
+        fontSize: "20px",
+        fontWeight: "bold",
+        color: "#2D3748",
+        marginBottom: "10px",
+      };
+
+      let descriptionStyle = {
+        fontSize: "16px",
+        color: "#4A5568",
+      };
+
+      return (
+        <div style={babyBoxStyle}>
+          <div style={numberStyle}>{number}</div>
+          <h2 style={titleStyle}>{title}</h2>
+          <p style={descriptionStyle}>{description}</p>
+        </div>
+      );
+    };
+
+    root.render(<App />);
+  </script>
+</body>
+
+</html>
